@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script>
+
+	function inversion(){
+		valor = document.getElementById("txtN1").value;
+		valor1 = document.getElementById("txtN2").value;
+			if( valor == "" || valor1== "") {
+  				alert('Completar todos los campos');
+				}	else
+   						{
+							var n1 = document.getElementById('txtN1').value;
+							var n2 = document.getElementById('txtN2').value;
+							var cien= n2/100;
+							var dia=(n1*cien)/365;
+							dia = Number(dia.toFixed(2));//muestra 2 decimales
+							PorDia.innerHTML = "Ganancia por Dia: "  +dia;
+							
+							var semana=dia*7;
+							semana = Number(semana.toFixed(2));//muestra 2 decimales
+							Por7Dias.innerHTML = "Ganancia por semana: "  +semana;
+							
+							var TreintaDias=dia*30;
+							TreintaDias = Number(TreintaDias.toFixed(2));//muestra 2 decimales
+							Por30Dias.innerHTML = "Ganancia por 30 Dias: "  +TreintaDias;
+							
+							var Total=+n1+TreintaDias;
+							Total = Number(Total.toFixed(2));//muestra 2 decimales
+							TotalMas30.innerHTML = "Total mas Ganancia por 30 Dias: "  +Total;
+							TotalMas30.style.color = "blue";
+							/*alert("La suma es: "+dia)*/
+      
+   						 }
+				};
+				
+				
+	function SacarPorcentajeDeLaInversion(){
+			valor = document.getElementById("txtN3").value;
+			valor1 = document.getElementById("txtN4").value;
+			valor2 = document.getElementById("txtN5").value;
+				if( valor == "" || valor1== ""  || valor2== "") {
+					alert('Completar todos los campos');
+					}	else
+							{
+								var n3 = document.getElementById('txtN3').value;
+            					var n4 = document.getElementById('txtN4').value;
+								var n5 = document.getElementById('txtN5').value;
+
+								var ganancia= n3/n4;
+								var porcentaje=((ganancia*365)/n5)*100;
+								porcentaje = Number(porcentaje.toFixed(2));//muestra 2 decimales
+								Porcentaje.innerHTML = "Porcentaje: "  +porcentaje+"%";
+								Porcentaje.style.color = "blue";
+		  
+							 }
+					};
+
+
+	function SacarLaInversionParaLaGananciaIdeal(){
+			valor = document.getElementById("txtN6").value;
+			valor1 = document.getElementById("txtN7").value;
+			valor2 = document.getElementById("txtN8").value;
+				if( valor == "" || valor1== ""  || valor2== "") {
+					alert('Completar todos los campos');
+					}	else
+							{
+								var n6 = document.getElementById('txtN6').value;
+								var n7 = document.getElementById('txtN7').value;
+								var n8 = document.getElementById('txtN8').value;
+					
+								var ganancia= n6/n7;
+								var porcentaje=((ganancia*365)/(n8/100));
+								porcentaje = Number(porcentaje.toFixed(2));//muestra 2 decimales
+								InversionRequerida.innerHTML = "Inversion Requerida: "  +porcentaje +" por " +n7 +" dias";
+								InversionRequerida.style.color = "blue";
+		  
+							 }
+					};
+
+		 
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+</head>
+
+<body>
+	<fieldset>
+        <legend>Inversion</legend>
+        <br>
+        <label for="">Monto de inversion:</label>
+        <input type="text" id="txtN1">
+        <br><br>
+        <label for="">Porcentaje a tomar:</label>
+        <input type="text" id="txtN2">
+        <br><br>
+        <input type="button" onclick="inversion()" value="Calucular">
+        <br />
+        
+        
+        <p id="PorDia">Ganancia por Dia: </p>
+        <p id="Por7Dias">Ganancia por semana: </p>
+        <p id="Por30Dias">Ganancia por 30 Dias: </p>
+        <p id="TotalMas30">Total mas Ganancia por 30 Dias: </p>
+	</fieldset>
+
+
+        
+        
+	<fieldset>
+        <legend>Sacar porcentaje de la inversion</legend>
+        <br>
+        <label for="">Ganancia:</label>
+        <input type="text" id="txtN3">
+        <br><br>
+        <label for="">Dias:</label>
+        <input type="text" id="txtN4">
+        <br><br>
+        <label for="">Inversion:</label>
+        <input type="text" id="txtN5">
+        <br><br>
+        <input type="button" onclick="SacarPorcentajeDeLaInversion();" value="Calucular">
+        <br />
+        <p id="Porcentaje">Porcenaje: </p>
+	</fieldset>
+    
+    
+	<fieldset>
+        <legend>Sacar la inversion para la ganancia ideal</legend>
+        <br>
+        <label for="">Ganancia ideal:</label>
+        <input type="text" id="txtN6">
+        <br><br>
+        <label for="">Dias:</label>
+        <input type="text" id="txtN7">
+        <br><br>
+        <label for="">Porcentaje:</label>
+        <input type="text" id="txtN8">
+        <br><br>
+        <input type="button" onclick="SacarLaInversionParaLaGananciaIdeal();" value="Calucular">
+        <br />
+        <p id="InversionRequerida">Inversion Requerida: </p>
+	</fieldset>
+<!--
+<section id="faqs">
+    
+		<h2 class="mas"><input type="button" value="¿Qué es jQuery?"> </h2>
+		<div class="cerrado">
+			<p>					
+				jQuery es una librería de funciones JavaScript que puedes utilizar para desarrollar sitios web.
+			</p>
+		</div>
+  -->      	
+</section>
+<!--
+<script>
+(function(){
+window.addEventListener('load', function(){
+
+var elementosH2 = faqs.getElementsByTagName("h2");
+var nodoH2;
+for(var i=0; i<elementosH2.length;i++){
+	nodoH2 = elementosH2[i];
+	nodoH2.addEventListener("click", function(){cambiar(this)});
+}
+
+function cambiar(e) {
+		var h2 = e; // h2 es el nodoH2 actual
+		if (h2.getAttribute("class") == "mas") {
+			h2.setAttribute("class", "menos");
+		}
+		else {
+			h2.setAttribute("class", "mas");
+		}
+		if (h2.nextElementSibling.getAttribute("class") == "cerrado") {
+			h2.nextElementSibling.setAttribute("class", "abierto");
+		}
+		else {
+			h2.nextElementSibling.setAttribute("class", "cerrado");
+		}
+	}
+});
+}());
+</script>
+<style>
+  .mas{display:inline;}
+  .cerrado{display:none;}
+  </style>-->
+</body>
+
+ 
+        
+ 
+        
+</html>
