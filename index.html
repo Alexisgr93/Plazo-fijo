@@ -64,6 +64,12 @@
 							porcentaje = Number(porcentaje.toFixed(2));//muestra 2 decimales
 							Porcentaje.innerHTML = "Porcentaje: "  +porcentaje+"%";
 							Porcentaje.style.color = "blue";
+
+							//Cuando calcula Con el checkbox MUESTRA la inversion inicial 
+							const InversionInicial = document.getElementById('InvAct');
+							InversionInicial.style.display = 'Block';
+							InvAct.innerHTML = "Inversion Inicial: " +Number(resto.toFixed(2));
+							InvAct.style.color = "blue";
 		  
 							}
 							}else {
@@ -77,6 +83,10 @@
 								porcentaje = Number(porcentaje.toFixed(2));//muestra 2 decimales
 								Porcentaje.innerHTML = "Porcentaje: "  +porcentaje+"%";
 								Porcentaje.style.color = "blue";
+
+								//Cuando calcula Sin el checkbox OCULTA la inversion inicial 
+								const InversionInicial = document.getElementById('InvAct');
+								InversionInicial.style.display = 'none';
 		  
 							 }
 
@@ -151,7 +161,9 @@
         <br><br>
         <input type="button" onclick="SacarPorcentajeDeLaInversion();" value="Calucular">
         <br />
-        <p id="Porcentaje">Porcenaje: </p>
+		<!-- Cuando calcula con el check box muestra la inversion inicial -->
+        <p id="Porcentaje">Porcentaje: </p>
+		<p style="display: none;" id="InvAct"></p>
 	</fieldset>
     
     
