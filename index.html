@@ -37,13 +37,37 @@
 				
 				
 	function SacarPorcentajeDeLaInversion(){
-			valor = document.getElementById("txtN3").value;
-			valor1 = document.getElementById("txtN4").value;
-			valor2 = document.getElementById("txtN5").value;
+
+		valor = document.getElementById("txtN3").value;
+		valor1 = document.getElementById("txtN4").value;
+		valor2 = document.getElementById("txtN5").value;
+		var checkbox = document.getElementById("flexCheckDefault");
+			//Verifica que el checkbox sea true
+			if (checkbox.checked) { 
 				if( valor == "" || valor1== ""  || valor2== "") {
 					alert('Completar todos los campos');
-					}	else
+					}else
 							{
+							//Si el checkbox es verdadero realiza esta accion...
+							//en caso de que sea inversion actualizada, se resta la ganancia y la inversion...
+							//para asi obtener la ganancia actualizada y luego se continua con el calculo...
+							//como en el caso de que no sea actualizada la inversion
+							//Inversion actualizada es el rendimiento diario
+							//Inversion es el rendimiento de un plazo fijo.
+							var n3 = document.getElementById('txtN3').value;
+            				var n4 = document.getElementById('txtN4').value;
+							var n5 = document.getElementById('txtN5').value;
+
+							var resto= n5-n3;
+							var ganancia= n3/n4;
+							var porcentaje=((ganancia*365)/resto)*100;
+							porcentaje = Number(porcentaje.toFixed(2));//muestra 2 decimales
+							Porcentaje.innerHTML = "Porcentaje: "  +porcentaje+"%";
+							Porcentaje.style.color = "blue";
+		  
+							}
+							}else {
+								{
 								var n3 = document.getElementById('txtN3').value;
             					var n4 = document.getElementById('txtN4').value;
 								var n5 = document.getElementById('txtN5').value;
@@ -55,7 +79,9 @@
 								Porcentaje.style.color = "blue";
 		  
 							 }
-					};
+
+        	}
+	};
 
 
 	function SacarLaInversionParaLaGananciaIdeal(){
@@ -119,6 +145,9 @@
         <br><br>
         <label for="">Inversion:</label>
         <input type="number" id="txtN5">
+		<!-- Agrego el checkbox para saber si es ganancia actualizada -->
+		<input class="form-check-input" type="checkbox" id="flexCheckDefault">
+			<label class="form-check-label" for="flexCheckDefault">Inversion Actualizada</label>
         <br><br>
         <input type="button" onclick="SacarPorcentajeDeLaInversion();" value="Calucular">
         <br />
